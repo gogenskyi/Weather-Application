@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:WasylWeather"
              StartupUri="Views/MainWindow/MainWindow.xaml">
     <Application.Resources>
-         
+        
     </Application.Resources>
 </Application>

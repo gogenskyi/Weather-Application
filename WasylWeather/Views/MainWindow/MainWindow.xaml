@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WasylWeather"
+        xmlns:cntrl="clr-namespace:WasylWeather.Views.Controls"
+        xmlns:vm="clr-namespace:WasylWeather.ViewModels"
         mc:Ignorable="d"
         Title="Null Weather" Height="600" Width="1000" ResizeMode="CanResize" ShowInTaskbar="True" ShowActivated="True" WindowState="Normal" WindowStyle="None" AllowsTransparency="True">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     <Grid Background="Transparent">
         <Border CornerRadius="12" BorderThickness="0" Padding="12">
             <Border.Effect>
@@ -33,14 +38,14 @@
                                 <Image Source="{Binding }" Width="32" Height="32"/>
                             </Label.Content>
                         </Label>
-                        <Label Content="{Binding WeatherStatus}" FontSize="16" FontWeight="Bold" Foreground="White"/>
-                        <Label Content="{Binding Temperature}" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                        <Label Content="{Binding Location}" FontSize="16" Foreground="White"/>
+                        <Label Content="{Binding City, UpdateSourceTrigger=PropertyChanged}" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                        <Label Content="{Binding WeatherText}" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                        <!--<Label Content="{Binding Location}" FontSize="16" Foreground="White"/>-->
                     </StackPanel>
                 </Grid>
                 <!--Search-->
                 <Grid>
-                    
+                    <cntrl:TextBoxSearch Grid.Column="1" Grid.RowSpan="2" Margin="6" Width="300" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"/>
                 </Grid>
             </Grid>
         </Border>
