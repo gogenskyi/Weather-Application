@@ -1,0 +1,48 @@
+﻿<Window x:Class="WasylWeather.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WasylWeather"
+        mc:Ignorable="d"
+        Title="Null Weather" Height="600" Width="1000" ResizeMode="CanResize" ShowInTaskbar="True" ShowActivated="True" WindowState="Normal" WindowStyle="None" AllowsTransparency="True">
+    <Grid Background="Transparent">
+        <Border CornerRadius="12" BorderThickness="0" Padding="12">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <!--Status Bar-->
+                <Grid x:Name="StatusBar">
+                    <StackPanel Orientation="Vertical" Margin="6" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Label>
+                            <Label.Content>
+                                <Image Source="{Binding }" Width="32" Height="32"/>
+                            </Label.Content>
+                        </Label>
+                        <Label Content="{Binding WeatherStatus}" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                        <Label Content="{Binding Temperature}" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                        <Label Content="{Binding Location}" FontSize="16" Foreground="White"/>
+                    </StackPanel>
+                </Grid>
+                <!--Search-->
+                <Grid>
+                    
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
