@@ -16,6 +16,19 @@ namespace WasylWeather.ViewModels
         private readonly APIRequester request = new();
         private string _city;
         private string _weatherText;
+        private string _weatherIconUrl;
+        private string _location;
+        public string WeatherIconUrl
+        {
+            get => _weatherIconUrl;
+            set { _weatherIconUrl = value; OnPropertyChanged(); }
+        }
+
+        public string Location
+        {
+            get => _location;
+            set { _location = value; OnPropertyChanged(); }
+        }
 
         public string City
         {
@@ -50,7 +63,10 @@ namespace WasylWeather.ViewModels
             }
 
             WeatherText = $"Погода: {weather.Description}\nТемпература: {weather.Temperature:F1}°C";
+            WeatherIconUrl = $"http://openweathermap.org/img/wn/{weather.Icon}@2x.png";
+            Location = weather.City;
         }
+
 
 
 

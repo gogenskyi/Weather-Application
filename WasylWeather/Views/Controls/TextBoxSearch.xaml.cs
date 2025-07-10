@@ -20,19 +20,29 @@ namespace WasylWeather.Views.Controls
     /// </summary>
     public partial class TextBoxSearch : UserControl
     {
-        public string Text
-        {
-            get { return (string)GetValue(TextProperty); }
-            set { SetValue(TextProperty, value); }
-        }
+        
         public TextBoxSearch()
         {
             InitializeComponent();
 
         }
-        
 
-        public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(TextBoxSearch), new PropertyMetadata(string.Empty));
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Textbox.Clear();
+            Textbox.Focus();
+        }
+
+        private void Textbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(Textbox.Text))
+            {
+                EnterTXT.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                EnterTXT.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }

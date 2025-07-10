@@ -11,7 +11,7 @@ namespace WasylWeather.Models
 {
     public class APIRequester
     {
-        private const string ApiKey = "YOUR_API_KEY"; // заміни на свій ключ
+        private const string ApiKey = "2078b89f9c6821322283cad0f4066630";
         private readonly HttpClient _httpClient;
 
         public APIRequester()
@@ -30,13 +30,18 @@ namespace WasylWeather.Models
             var json = await response.Content.ReadAsStringAsync();
             using var doc = JsonDocument.Parse(json);
 
-            string description = doc.RootElement.GetProperty("weather")[0].GetProperty("description").GetString();
-            double temperature = doc.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
+            var weather = doc.RootElement.GetProperty("weather")[0];
+            string description = weather.GetProperty("description").GetString();
+            string icon = weather.GetProperty("icon").GetString();
+            double temp = doc.RootElement.GetProperty("main").GetProperty("temp").GetDouble();
+            string cityName = doc.RootElement.GetProperty("name").GetString();
 
             return new WeatherInfo
             {
                 Description = description,
-                Temperature = temperature
+                Temperature = temp,
+                Icon = icon,
+                City = cityName
             };
         }
     }
